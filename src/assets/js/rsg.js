@@ -209,8 +209,6 @@
 				return;
 			}
 
-			console.log(skins);
-
 			let skincount = Object.keys(skins).length;
 			let a = 0;
 			for (var i in skins) {
