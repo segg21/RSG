@@ -223,6 +223,8 @@
 			let skins = {};
 			let promises = {};
 
+			data = (!data.Skins) ? data : data.Skins;
+
 			if(!Array.isArray(data)) {
 				data = (!data.Skins) ? data : data.Skins;
 				for(var i in data) {
@@ -258,7 +260,6 @@
 				await sleep(SLEEP_TIME * SLEEP_MULTI);
 			}
 			a = 0;
-			console.log(promises);
 			for(var i in skins) {
 				output("Processing " + i + ". " + a++ + "/" + skincount + "% done.");
 				skins[i] = (await promises[i]).response.publishedfiledetails;
