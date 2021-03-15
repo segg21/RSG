@@ -1,0 +1,27 @@
+{
+  "name": "RSG",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-packager ."
+  },
+  "keywords": [],
+  "author": "Segfault",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^12.0.1",
+    "electron-builder": "^22.10.5"
+  },
+  "dependencies": {
+    "install": "^0.13.0",
+    "npm": "^7.6.3"
+  },
+  "build": {
+    "appId": "com.segfault.rsg",
+    "win": {
+      "category": "com.segfault.rsg"
+    }
+  }
+}

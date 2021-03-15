@@ -1,0 +1,62 @@
+<!DOCTYPE html5>
+<html data-ng-app="app" data-ng-controller='main'>
+    <head>
+        <title>RSG{{v_prefix}} ({{name}}) [v{{version}}]</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel='stylesheet' href='assets/css/style.css'/>
+        <script src="assets/js/angular.min.js" crossorigin="anonymous"></script>
+    </head>
+    <body data-ng-cloak>
+        <div id='content'>
+            <div id='header'>
+                <div><h2 style="font-family: 'Roboto', sans-serif !important">RSG{{v_prefix}} v{{version}}</h2></div>
+                <div><span style="font-family: 'Roboto', sans-serif !important">Welcome! <span>(<i>This project is not entirely finished! <span style='color:rgba(255,0,0,0.8)'>I'm not responsible for any use of Approved skins!</span>Enjoy</i>)</span></span></div>
+            </div>
+            <div id='grid'>
+                <div data-ng-controller='skinsearch' id="skinsearch">
+                    <div>
+                        <span>
+                            <span style='font-weight: bold;'>Skin Search:</span> 
+                            <select data-ng-model="skinsearchtag" ng-change="search(skinsearchtag, true, page = 1)">
+                                <option data-ng-repeat="t in tags" value="{{t.short}}">{{t.name}}</option>
+                            </select>
+                            <label style='font-weight: bold' >Approved Only: <input title="Be aware, approved skins should NOT be used on servers." data-ng-change="alertOfApproved(acceptedOnly); search(skinsearchtag, true, 1)" data-ng-model="acceptedOnly" data-ng-checked="acceptedOnly" type='checkbox' checked/> (Uncheck for all)</label>
+                        </span>
+                    </div>
+                    <br/>
+                    <div style="padding: 1em" class="skinresults">
+                        <img loading="lazy" class="skinitem" data-ng-click="addskin(skin)" style="margin: 1px; width: 64px; height: 64px" data-ng-repeat="skin in results track by skin.id" data-ng-src="{{skin.artwork}}"/>
+                        <img loading="lazy" title="Next Page" data-ng-hide="hidenextbtn" data-ng-click="search(skinsearchtag, false, (page = (page + 1)))" style="cursor: pointer; margin: 1px; width: 64px; height: 64px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAQAAABpN6lAAAAABGdBTUEAALGPC/xhBQAAAAJiS0dEAP+Hj8y/AAAAB3RJTUUH5AwIFgAdOuiFwQAAAAFvck5UAc+id5oAAAUZSURBVHja7Z1JTxVREIUvgyPoE1ScIaIScCAQHIITOEQlDkENDjExjiGOxBjjGPyzLty7caPPhQY9tTh02aXVt9476+/lntPd6eFW3ftSaqqx1Vbq1x3pVKqlz4XY9nQs9adP6bt3ZDsN1n+pwGHsXGDXets2U31B6eOi8Ps/6BZv5+YHoF5PhxXsnLfzf3AA6vVUo/A1YIe9vdtolTgETC2CXelt3kYHINQdyq5THK6M9BZC7aTsSWCnva3bqFWc1yUMFuwWb/M22qK4tJcIttXbvI2mIdQpyu4E9q23dSOJ88rf9e4Ae9Dbu41WikNA3/UE2+lt3kbDEOoRZdfEfCDOQag9lD0M7E1v6zaS73rLKT0P7HZv8zbqUVzabYJt9zZvo7MQ6jxle0PeCUSojRTGL8Rj3t5ttKzEA3GNt3kbDUKol5TtFIcgiB5CqFHKjgH7wNu6kcR57aDwK2AHvL3bqFtxacsP6mXe5m00AaFmKLsp5J1AhNpK4YvAnvH2bqN2cQho8USw673N26gfQn2g7HLN+0M+ugWhxim7F9hn3taNJM7rago/AXaft3cbrVbc4eUH9Qpv8zY6BKFuU3Z9yAdiegeh+il7GthL3tZtJCc/NMWTzd7mbaQpniwVbJDiyRUINUnZXcC+9rZuJHFeuyl8D9gxb+826tDc4QXbUWyIqmsEQs1StivmA/EFhBqi7FFgr3tbt5F816OTH4Lt8zZvow2KS1t+UAcpnkxBqCnK9oW8E4hQPRS+AewRb+82Uk1+CLZWdJBqawhCvaBs0OLJLIQaoex+YO96WzeSOK+8c/Q1sLu8vdtoreLSlsWTpd7mbTQJoa5QdnPIO4EIxTtHLwF72tu7jWTnqKZ4EmTlyQ4I9Y6yKzTvD/noNoQ6RNl9wD72tm4kcV5XUfg5sHsKDlFx1RR3eF03YjYah1C3KKvpRsxIHyAUL56cAfaCt3UbqTpHBbvJ27yNtikubVU3Yj6agVB8KcUAsEG7CbgeKliiKl08rfVvYG2RmaLiLB3UO/Ufgrbalh2UnQD2srd1C43CJX2fsgHrRo1eORSRuij8ANjRgkNUWlch0nHK4gPwZcERKq2tistf9o9U6Sn2l2r4l2BcgK/pIQvxGYRdhPxDWDORnok0Za+IfaQiEi98PgI2RCfxTYjEe8mxnPrc27qF+iDSPGUDriYos56kp+ggFZaI1Evhc8Ce8/ZuIdw/gLfABZwFrpV4+EVYVSgi8T1EsBI0VHCISgtrgQcoizuTzBYcodLCavAbyspqcACpdpIS7Dpv8wYSkTQdISe9vVsIe4KmKRtwQbVmJjdiV5iIpNlUIURfIBayRiirqRBkIs1MrqpCkIdUM7mC7So6SIUlIvGZXE2FIBNpZnI1FYJMpJnJDbjBmq6pTVMhyESamVxNhSAT7YZITykbcGFMoy+NEpH4TK6mQpCJcHkk3xuqD9j5giNUWmV2Fy33ryeVUJkl0r1FB6my5iDSIGU1FYJMpJnJ1WyzlIlUM7mCjbDLuIjEV3ZpKgSZSDOTi5vthdgsRzOTG/C/Jhr+30Y0M7kTwE57W7cQzuTyNf7NXm9gG7zXe8Tbu4VwJvcoZZu93sAGaHdr9npDJP5nKc1e72gPvzK93pVZ9l7iHbz+BRLymVzYYL9lOH31Dm4gOKPjCvaJt3PzA7DIzvEpwV5QER5+P6X54+WFP2gN0e72O1aaSmMFz2h7mkwn+EdyU039f/0A879X99BpxWsAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjAtMTItMDhUMjI6MDA6MjQrMDA6MDBZBJaCAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIwLTEyLTA4VDIyOjAwOjI0KzAwOjAwKFkuPgAAAABJRU5ErkJggg==">
+                        <img loading="lazy" title="Add All" data-ng-hide="results.length == 0" data-ng-click="addall()" style="cursor: pointer; margin: 1px; width: 64px; height: 64px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAAABGdBTUEAAYagMeiWXwAAAAJiS0dEAP+Hj8y/AAAAB3RJTUUH5AwJAAIEzKL3JAAACGFJREFUaN61mV1sFNcVx38zu16wa629YGO1gDcSxSZUArdVQhJH6oMRTQuVEil+6mNfWqSqlcsj76QoBdw89SHNC6CqKIIWKAlOpD4ESj4A2+DEH7ixzXrNemc/vF+zHzNz+mCDZ3ZnvWvjnnnZOXvPx9x7zrn3/K9CHTTKf3gbP14W25r3KT3KQc8+dZcEPH5FAREzpSSskDkuIzKcGd+hGaT4kFc4UIdupdaAKBlaaSXW5nvZd8T7mrqHFsXjPlZMlqxp43bxZvGL7VqSJb5Dez1fWI0ecIMlINZdOGnctXSpkyzduFs4GeuGNDd4uDHjZxA0BK2r9K45W69pO5mz+dORrmUt59Zrfpy7WIQD2QFjeiPGV2ZCjOnswELA4h4T6zE/Twgh01sasqyNm19xwioNZXqFEPP1GT+EkGLUlztuhp/X+LPFCOeOP/ClEF6pZb5AjASLrfmzVqHGlxWtJSNizplzRsRasoo1RhfyZ6OtCWIUyix6nV+fIYbVEfzTll9Wc9HKWdMyLKOlSSK5lFcHo7HJT0dDFwfUHnWP2uQmpfi2/J72mT+oEYVDfF5NuZBgvKNwudrCG5P62XhfuL1fEYroREmQIIpOEeFtZb493qefNSarhWTh8nhHAqkeeikWW/Xz7ubNsdIJLSjohPmIJNccsldJcoN5dAQtWDphjrm7oJ+Ptqbcw3GcEKO+/FlXQS1/SusU4nzKozVj6BGfEkfQOvOnLM1NV/7sA998ZVKe4SuE3HG30CvdSfehJLnJ47ry6DEfkwQl3Ve64xaOuePCvfLSJFikeysTz7KKF2KdwhQLdRl/SgtMIWidpYtSsaJmONNrOSPhARrhQGmoMur0c5P+BMJHZe66P3a6gZDmSYs+aBkVczq0EIjx9ergjxCyA+VVz7L0czNNCeL8rCJbxCs7JWh7doq3PLrfwCDLf5v0QanQnBsQPn46MMoSWldlzS9emPQn0F0mWJCdclvmZGblmZPbstMtvXSyPGkpXayY2keLXWm05UHfAqV3K0Mv1pkg7rrCggRlzjF8ToLu+W2QRussD0dL8qdhFmCUBLFuo2zDtbRMnyAVk29zYMYhMFPNgZ8iCOk+sywpzdlYd4KH8BeEwsmKbD2FMlUWehtzAK4zAUr+VLmNwknhfYihtRl3y7wb0zqTayTe+hyAMEmineXV0bgba4uj+vG9rO53ClgfbJ/7ku+yWfQ9btM2Z33g5Kr7fS/5Ub34jihb7X+YU0uXEuzbNPMAPyBO8pI5ZecpW31HPKiLbd7XnINL17fP3mf3pjoQ5B5ts6XrTq6nN7pdbd6n7rEzrZx+LU9wU80DvIBO7rqVs/PUPc0vqkoPLQ4HpvOjCb6/6Q7sJY4+Yk07mC1Kj6ocdLYZMvw7bfTp7+o136qwYNXaI4b5rWYN20UUj3LQ6ymLNhn9uyytvnrpcB7bVoztKuN62QWoFSMNIhjLP1/nqBRHnX97ur3qLof5UmlS4bNVRgeX2OXyvV46HO8dXHpqyEYqIfqfHoD+zc8pTjaUlAbbHOz2SsAhohMxOeb8snoSwsvOqv+s0JvoECGPzQEJqB6/Y27zuVSmfLqfhxzSGfSU5dhePX6v4uiPlYJXr9kwb5i8WLriaAwURd2osk1zSsQ+B7LFaPz/zYCBNMoWO0dENVN2hrq1yd/slHq+OXJIN9PoVxvtHDPlVRKOSthIh4er/GLV6RBUSUN7JbDlu8N8aJV7BQ9GB46NT0l4rZDnBRujoaGrgddXGRH6qxSiS47Ei9BPqEohWqGf0IB02asAyGOvOd7wukPkQL/yK7EpqNbWG2VvoVp9y2f8VflbGW5lTngZEdO+G6g9g21EV+ajiipxiwy1FuL1Q95rU3scekwZUWWYJYeePY0HttXoADdCU2yj8aBz62dJ7qvpcecWqTY1HtvKzKY78C2NNB11ogfWdGZc3aEZt5xDG45qwR8xt6nmZ/gxWrDhqJNr3mqPqQbFIcnb2Z69rf0Be+e2CfSAbbT0e/baeZIv3jQhTqzKsTxcVd16j+XzJIgGK4/l8bYE6ods08zLTgF1f/NvWpUM19kM+idpAkrzr5Xyw//lgHYFHpAg1m1WtGbpPkE48twzcHi5NTtc3pqVZha7NcZguUXMny7HEUp3tM60S3V95sA6mtNoZyVWkn1HeH95SJQ0i13Go4r++OJCS5acuwN1tuc5Miy4tufRruRq7/mxK0Ahlj443ZTFqFiI+gCKwxhkmW7SBy1XgOKT1aFfE+OJC0RjGfrgQksaKQPl6oForiKkWagC0UQCccadKi0yLiCVWKWL0U5hol6oeYXmGUeIVgGpsuUgFQxyH0FfE6b71zKiUZNmuEZiDZhOPy6M8F652CTzPKwCVJqafiraKcQYYmpN41MMEUOIBvVTZhWgcswXdtcSJk20Ne8K1VpijpVORINCjhDXSHLFIXuFBNcIkUOIBosnzDF3LfnzWmu6OvQhJJnYsTZYHTscan/LFax+Swm1xw6vDVZP7EiWrb7jDPEq14lh7QieWRuut4YZLU4S0VMeHczGRj8dvjXheoDChdkBz+I2jnG7+hoWiJMkWt+FRerZhUWqngsLrTVJvOLCooJeRUjz0Kdv6pWNfnzMl0Z4rZb5p+EY3tRLq2yvEF5je3ehSYaxeBLIDVTuEesh41FuIBKwGKmRvi70Z2Q5o7v0PxozGzFemsm+E+0S4khl2amPvuEmSwjR7uK6r26LJxe7hSSfOGt+BdXsRL8gTQ/bSLQ1vOQ74umtfXlt3ireLH0Z0GL8g528UUN/Xa3wGJ/zJn48RLc3v6j0KAc93cpu5/W9PDYnZESGs9+0xUzSXOEQ++vQ/T/9pPGwSpkGTAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMC0xMi0wOVQwMDowMjowNCswMDowMDCOobUAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjAtMTItMDlUMDA6MDI6MDQrMDA6MDBB0xkJAAAAAElFTkSuQmCC"/>
+                    </div>
+                </div>
+                <div data-ng-controller="skins">
+                    <div style="overflow: hidden !important;">
+                        <h3>Skin List: 
+                            <a href="/#download" onclick="return false;" data-ng-click="download()">Download</a>,
+                            <a href="/#generate" onclick="return false;" data-ng-click="generate()">Generate</a>, 
+                            <a href="/#clear" onclick="return false;" data-ng-click="clear()">Clear</a>,
+                            <a href="/#import" onclick="return false;" data-ng-click="import()">Import</a>,
+                            <a href="/#howto" onclick="return false;" data-ng-click="howto()">How To Use ?</a>
+                        </h3>
+                    </div>
+                    <div id="g2">
+                        <div id="collapsable" data-ng-repeat="(k,v) in skins">
+                          <div id="collapsableheader">({{v.length}}) {{v[0].name}} <samp style="font-size: 10px">{{k}}</samp></div>
+                          <div id="collapse" style='display:none'>
+                            <img loading="lazy" data-ng-click="remove(skin)" class="skinitem" style="margin: 1px; width: 64px; height: 64px" data-ng-repeat="skin in v track by skin.id" data-ng-src="{{skin.artwork}}"/>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="footer">
+                <div style="font-family: 'Open Sans', sans-serif !important;">Made By <b><samp>Segfault#1658</samp></b> w/ <span style='color:red'>&hearts;</span></div>
+                <div style='border-left: 1px solid rgba(255,255,255,0.1)'><span>Output: <span class='output'>{{output}}</span></span></div>
+            </div>
+        </div>
+        <script type='text/javascript' src='assets/js/rsg.js'></script>
+    </body>
+</html>

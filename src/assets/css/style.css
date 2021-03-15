@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poiret+One&family=Roboto:wght@900&display=swap');
+[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak {
+    display: none!important;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;   
+    color: white;
+    font-family: 'Poiret One';
+}
+
+div {
+    position: relative;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    background: rgba(14,14,14,1);
+    background-image: url(https://files.facepunch.com/garry/1b1011b1/test.png?1=);
+    background-repeat: repeat;
+    background-size: auto;
+    display: relative;
+}
+
+div#header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 20px;
+    outline: 1px solid rgba(255,255,255,0.1);
+    max-height: 80px;
+}
+div#content {
+    width: 100%;
+    height: 100%;
+    max-height: 100vh;
+    outline: 1px solid rgba(255,255,255,0.1);
+    position: absolute;
+    top: 0;
+}
+div#grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: calc(100% - 130px);
+    outline: 1px solid rgba(255,255,255,0.1);
+    padding: 30px;
+}
+div#grid > div{
+    overflow: auto;
+    margin: 0px 10px 0px 10px;
+}
+#footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 60px;
+    max-height: 60px;
+    outline: 1px solid rgba(255,255,255,0.1);
+}
+
+#footer div {
+    padding: 20px;
+}
+
+div#collapsable {
+    width: 100%;
+    background-color: #141414;
+    outline: 1px solid rgba(255,255,255,0.1);
+    margin-top: 5px;
+}
+
+input {
+    outline: 1px solid rgba(255,255,255,0.2);
+    padding: 5px;
+}
+
+img.skinitem {
+    transition: 0.5s;
+}
+
+img.skinitem {
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+}
+
+img.skinitem:hover {
+    transition: .01s;
+    transform: scale(2);
+    cursor: pointer;
+    border-radius: 20%;
+}
+
+div#collapsable div#collapsableheader {
+    padding: 5px;
+    cursor: pointer;
+    background-color: rgba(255,255,255,0.1);
+}
+
+div#collapsable div#collapsableheader:before {
+    content: "\25BA";
+}
+
+div#collapsable.open div#collapse {
+    display: block !important;
+}
+
+div#collapsable.open div#collapsableheader:before {
+    content: "\25BC" !important;
+}
+
+div#collapsable div#collapse {
+    padding: 5px;
+}
+
+select {
+    border-bottom: 1px solid rgba(255,255,255,0.2)
+}
+
+a {
+    color: rgba(200, 200, 05, 0.9);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(14,14,14,0.2); 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(14,14,14,0.5); 
+}
+
+.output {
+    font-weight: bold;
+}
+
+select, input, option, textarea {
+    color: black;
+}
+
+div#asyncDialog{
+    position:absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+    font-weight: bold;
+}
+
+div#asyncDialog.enabled { display: block; }
+div#asyncDialog * {  color: black ; }
+div#asyncDialog > div {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    width: 50%;
+    height: 50%;
+    background-color: rgba(255,255,255,0.9);
+    z-index: 999999;
+    padding: 5%;
+    overflow: auto;
+}
