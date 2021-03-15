@@ -18,10 +18,4 @@
     "install": "^0.13.0",
     "npm": "^7.6.3"
   },
-  "build": {
-    "appId": "com.segfault.rsg",
-    "win": {
-      "category": "com.segfault.rsg"
-    }
-  }
 }
