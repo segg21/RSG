@@ -9,7 +9,10 @@ A web (program) used to view/generate batches of Skins for the game from live fr
 - I will however kindly accept any PR/Contributions there may be.
 
 **Install**
-- Download from [Releases](https://github.com/LegitSoulja/RSG/releases)
+- Download build from [Releases](https://github.com/LegitSoulja/RSG/releases)
+- Run RSG
+
+**Building/Running from Source**
 - `git clone https://github.com/LegitSoulja/RSG/`
 - `cd RSG/src`
 - `npm install`
