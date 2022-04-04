@@ -1,5 +1,5 @@
 <!DOCTYPE html5>
-<html data-ng-app="app" data-ng-controller='main'>
+<html data-ng-app="app" data-ng-controller='main' data-ng-cloak>
     <head>
         <title>RSG{{v_prefix}} ({{name}}) [v{{version}}]</title>
         <meta charset="UTF-8">
@@ -12,15 +12,15 @@
         <div id='content'>
             <div id='header'>
                 <div><h2 style="font-family: 'Roboto', sans-serif !important">RSG{{v_prefix}} v{{version}}</h2></div>
-                <div><span style="font-family: 'Roboto', sans-serif !important">Welcome! <span>(<i><span style='color:rgba(255,0,0,0.8)'>I'm not responsible for any use of Approved skins</span></i>) Enjoy!</span></span></div>
+                <div><span style="font-family: 'Roboto', sans-serif !important">Welcome! (<b class='fadeInAndOut' style='color:rgba(255,0,0,0.8); text-decoration: underline'>I'm not responsible for any use of Approved skins</b>)</span></div>
             </div>
             <div id='grid'>
                 <div data-ng-controller='skinsearch' id="skinsearch">
                     <div>
                         <span>
                             <span style='font-weight: bold;'>Skin Search:</span> 
-                            <select data-ng-model="skinsearchtag" ng-change="search(skinsearchtag, true, page = 1)">
-                                <option data-ng-repeat="t in tags" value="{{t.short}}">{{t.name}}</option>
+                            <select style='font-family: cosmicsans ' data-ng-model="skinsearchtag" ng-change="search(skinsearchtag, true, page = 1)">
+                                <option style='font-family: cosmicsans ' data-ng-repeat="t in tags" value="{{t.short}}">{{t.name}}</option>
                             </select>
                             <label style='font-weight: bold' >Approved Only: <input title="Be aware, approved skins should NOT be used on servers." data-ng-change="alertOfApproved(acceptedOnly); search(skinsearchtag, true, 1)" data-ng-model="acceptedOnly" data-ng-checked="acceptedOnly" type='checkbox' checked/> (Uncheck for all)</label>
                         </span>
@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div id="footer">
-                <div style="font-family: 'Open Sans', sans-serif !important;">Made By <b><samp>Segfault#1658</samp></b> w/ <span style='color:red'>&hearts;</span> (Source: <a href='https://github.com/LegitSoulja/RSG'>Github</a>)</div>
+                <div style="font-family: 'Open Sans', sans-serif !important;">Made By <b><samp style='user-select: all;'>Segfault#1658</samp></b> w/ <span style='color:red'>&hearts;</span> (Source: <a href='https://github.com/LegitSoulja/RSG'>Github</a>)</div>
                 <div style='border-left: 1px solid rgba(255,255,255,0.1)'><span>Output: <span class='output'>{{output}}</span></span></div>
             </div>
         </div>

@@ -1,9 +1,11 @@
 /*
-* Author: Segfault /ALL RIGHTS RESERVED\
+* ALL RIGHTS RESERVED
+* Author: Segfault
+* GitHub: https://github.com/LegitSoulja/RSG
 * License: GNU GENERAL PUBLIC LICENSE
 */
 (async function () {
-	const VERSION = '1.1.2';
+	const VERSION = '1.1.3';
 	const V_PREFIX = ':EE';
 	const NAME = 'Rust Skin Generator: Electron Edition';
 	const ITEM_BASE = require('./assets/js/data/itembase.json');
@@ -19,7 +21,11 @@
 		GetJson: async (url, data) => await Request.fetch(url, null, (d) => d.json()),
 		Post: async (url, data) => await Request.fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded', }, body: queryBuilder(data) }, (d) => d.json()),
 		fetch: (url, data, func) => {
-			if (data == null || !data.timeout) data = Object.assign({ timeout: 2E4, }, data);
+			if (data == null || !data.timeout) {
+				if(data == null)
+					data = {};
+				Object.assign(data,{ timeout: 2E4, });
+			}
 			data.redirect = (data.redirect) ? data.redirect : 'follow';
 			return new Promise((res, rej) => fetch(url, data).then(func).then(res).finally(rej));
 		}
@@ -29,8 +35,9 @@
 	const events = {
 		events: {},
 		on: function (name, func) {
-			if (typeof (func) !== 'function') return;
-			if (!this.events.hasOwnProperty(name)) this.events[name] = [];
+			if (func == null || func.apply == null) return;
+			if (!this.events.hasOwnProperty(name)) 
+				this.events[name] = [];
 			this.events[name].push(func);
 		},
 		call: function (name, args) {
@@ -57,9 +64,11 @@
 	function alert(msg) {
 		return new Promise((res, rej) => {
 			const d = baseDialog.cloneNode(true);
+			const b = document.createElement('button'); 
 			d.classList.add('enabled');
-			const h2 = Object.assign(document.createElement('h3'), { innerText: msg.toString() });
-			const b = Object.assign(document.createElement('button'), {
+			const h2 = document.createElement('h3');
+			Object.assign(h2, { innerText: msg.toString(), style: { fontWeight: 'bold'} });
+			Object.assign(b, {
 				style: { padding: '10px', position: 'relative', bottom: 0 }, innerText: 'Ok', onclick: () => {
 					d.remove();
 					res();
@@ -80,9 +89,12 @@
 				if (t) res(r);
 				else rej(r);
 			};
-			const h2 = Object.assign(document.createElement('h3'), { innerText: msg.toString() });
-			const b = Object.assign(document.createElement('button'), { style: { padding: '10px' }, innerText: 'Ok', onclick: () => submit(true, true) });
-			const c = Object.assign(document.createElement('button'), { style: { padding: '10px' }, innerText: 'Cancel', onclick: () => submit(false, false) });
+			const h2 = document.createElement('h3');
+			const b = document.createElement('button');
+			const c = document.createElement('button');
+			Object.assign(h2, { innerText: msg.toString(), style: { fontWeight: 'bold'} });
+			Object.assign(b, { style: { padding: '10px' }, innerText: 'Ok', onclick: () => submit(true, true) });
+			Object.assign(c, { style: { padding: '10px' }, innerText: 'Cancel', onclick: () => submit(false, false) });
 			d.children[0].appendChild(h2);
 			const dd = document.createElement('div');
 			dd.appendChild(b);
@@ -96,10 +108,13 @@
 		return new Promise((res, rej) => {
 			const d = baseDialog.cloneNode(true);
 			d.classList.add('enabled');
-			const h2 = Object.assign(document.createElement('h3'), { innerText: msg.toString() });
-			const i = Object.assign(document.createElement('input'), {
+			const h2 = document.createElement('h3');
+			const i = document.createElement('input');
+			Object.assign(h2, { innerText: msg.toString(), style: { fontWeight: 'bold'} });
+			Object.assign(i, {
 				style: { width: '100%' }, onkeyup: (e) => {
-					if ((e.keyCode || e.which || e.charCode) == 13) submit(true, i.value)
+					if ((e.keyCode || e.which || e.charCode) == 13)
+						submit(true, i.value)
 				}
 			});
 			const submit = (t, r) => {
@@ -107,8 +122,10 @@
 				if (t) res(r);
 				else rej(r);
 			};
-			const b = Object.assign(document.createElement('button'), { innerText: 'Ok', style: { padding: '10px' }, onclick: () => submit(true, i.value) });
-			const c = Object.assign(document.createElement('button'), { style: { padding: '10px' }, innerText: 'Cancel', onclick: () => submit(false, false) });
+			const b = document.createElement('button');
+			const c = document.createElement('button');
+			Object.assign(b, { innerText: 'Ok', style: { padding: '10px' }, onclick: () => submit(true, i.value) });
+			Object.assign(c, { style: { padding: '10px' }, innerText: 'Cancel', onclick: () => submit(false, false) });
 			d.children[0].appendChild(h2);
 			d.children[0].appendChild(i);
 			const dd = document.createElement('div');
@@ -166,7 +183,6 @@
 		}
 
 		$scope.import = async function () {
-
 			let data = await prompt("Paste JSON data below");
 			try {
 				data = JSON.parse(data);

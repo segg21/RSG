@@ -2,12 +2,29 @@
 [ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak {
     display: none!important;
 }
+
+@font-face {
+  font-family: rustFont;
+  src: url(../font/rust.ttf);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;   
     color: white;
     font-family: 'Poiret One';
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none; 
+    -ms-user-select: none;
+    user-select: none; 
+}
+
+button {
+	font-family: rustFont;
+	padding: 5px;
 }
 
 div {
@@ -30,6 +47,9 @@ div#header {
     padding: 20px;
     outline: 1px solid rgba(255,255,255,0.1);
     max-height: 80px;
+}
+div#skinsearch{
+    border-right: 1px solid rgba(255,255,255,0.1)
 }
 div#content {
     width: 100%;
@@ -76,9 +96,6 @@ input {
 
 img.skinitem {
     transition: 0.5s;
-}
-
-img.skinitem {
     border: 1px solid rgba(255,255,255,0.2);
     border-radius: 50%;
 }
@@ -140,6 +157,18 @@ a {
 
 .output {
     font-weight: bold;
+}
+
+.fadeInAndOut{
+    animation: fadeInAndOut 5s alternate infinite;
+}
+@keyframes fadeInAndOut{
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.3;
+    }
 }
 
 select, input, option, textarea {

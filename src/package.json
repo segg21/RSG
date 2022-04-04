@@ -1,7 +1,7 @@
 {
   "name": "RSG",
   "version": "1.0.0",
-  "description": "",
+  "description": "https://github.com/LegitSoulja/RSG",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -11,11 +11,12 @@
   "author": "Segfault",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^12.0.1",
+    "electron": ">=13.6.6",
     "electron-builder": "^22.10.5"
   },
   "dependencies": {
     "install": "^0.13.0",
-    "npm": "^7.6.3"
+    "npm": "^7.6.3",
+    "electron": ">=13.6.6"
   }
 }
