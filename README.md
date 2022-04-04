@@ -1,6 +1,6 @@
 # RSG (Rust Skin Generator)
 
-![img](https://github.com/LegitSoulja/RSG/blob/main/src/assets/img/preview.png?raw=true)
+![img](https://github.com/LegitSoulja/RSG/blob/main/src/assets/img/preview.png?raw=true&cache=113)
 
 A web (program) used to view/generate batches of Skins for the game from live from Steam Workshop / API.
  
