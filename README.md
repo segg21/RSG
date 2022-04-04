@@ -10,12 +10,17 @@ A web (program) used to view/generate batches of Skins for the game from live fr
 
 **Install**
 - Download from [Releases](https://github.com/LegitSoulja/RSG/releases)
-
-**Build**
 - `git clone https://github.com/LegitSoulja/RSG/`
 - `cd RSG/src`
-- `npm install && npm run build`
-- Optionally you can run this project without building `npm install && npm run start`
+- `npm install`
+
+**Running**
+- `npm run start`
+
+**Building**
+- `npm install electron-builder electron-packager`
+- `npm run build`
+
 
 > [**License**](https://github.com/LegitSoulja/RSG/blob/main/LICENSE)
 
