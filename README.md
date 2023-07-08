@@ -4,7 +4,7 @@
 
 A **Rust** (Facepunch Game) web/program that's used to view & **automatically** generate **Skins** for skin plugins, directly from **Steam Workshop** / **API**.
  
-- This was a web project I made in the past for personal, turned into a public electron program.
+- This was a web project I made in the past for personal use then turned into a public **electron** program.
 - I do not plan to maintain or make this project better in the future as it's intended to do what I wanted and no more.
 - I will however kindly accept any PR/Contributions there may be.
 
