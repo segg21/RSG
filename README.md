@@ -1,6 +1,6 @@
 # RSG (Rust Skin Generator)
 
-![img](https://github.com/LegitSoulja/segg21/blob/main/src/assets/img/preview.png?raw=true&cache=113)
+![img](https://github.com/segg21/RSG/blob/main/src/assets/img/preview.png?raw=true&cache=113)
 
 A **Rust** (Facepunch Game) web/program that's used to view & **automatically** generate **Skins** for skin plugins, directly from **Steam Workshop** / **API**.
  
