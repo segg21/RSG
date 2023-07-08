@@ -1,11 +1,11 @@
 # RSG (Rust Skin Generator)
 
-![img](https://github.com/LegitSoulja/RSG/blob/main/src/assets/img/preview.png?raw=true&cache=113)
+![img](https://github.com/LegitSoulja/segg21/blob/main/src/assets/img/preview.png?raw=true&cache=113)
 
-A web (program) used to view/generate batches of Skins for the game from live from Steam Workshop / API.
+A **Rust** (Facepunch Game) web/program that's used to view & **automatically** generate **Skins** for skin plugins, directly from **Steam Workshop** / **API**.
  
-- This was a web project I made in the past for personal use and decided to turn this program an into electron app.
-- I do not plan to future maintain or make this project better as it's intended to do what I wanted and no more.
+- This was a web project I made in the past for personal, turned into a public electron program.
+- I do not plan to maintain or make this project better in the future as it's intended to do what I wanted and no more.
 - I will however kindly accept any PR/Contributions there may be.
 
 **Install**
@@ -13,7 +13,7 @@ A web (program) used to view/generate batches of Skins for the game from live fr
 - Run RSG
 
 **Building/Running from Source**
-- `git clone https://github.com/LegitSoulja/RSG/`
+- `git clone https://github.com/segg21/RSG/`
 - `cd RSG/src`
 - `npm install`
 
@@ -25,6 +25,6 @@ A web (program) used to view/generate batches of Skins for the game from live fr
 - `npm run build`
 
 
-> [**License**](https://github.com/LegitSoulja/RSG/blob/main/LICENSE)
+> [**License**](https://github.com/segg21/RSG/blob/main/LICENSE)
 
 **You may use this project/code for non commercial uses. If you reproduce the code from here, retain my credits in source.**
